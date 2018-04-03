@@ -1,15 +1,13 @@
 clc; clear;
 
 fprintf('+------------------------------------------------------------------------+\n');
-fprintf('|                           REDES NEURAIS ARTIFICIAIS                    |\n');
 fprintf('|                            PERCEPTRON DE UMA CAMADA                    |\n');
-fprintf('|                         (Prof. Ajalmar Rego da Rocha Neto)             |\n');
-fprintf('|                     AcadÍmico: Raul Gabriel Carvalho de Melo           |\n');
-fprintf('|                                IFCE - Maracana˙                        |\n');
+fprintf('|                     Acad√™mico: Raul Gabriel Carvalho de Melo           |\n');
+fprintf('|                                IFCE - Maracana√∫                        |\n');
 fprintf('+------------------------------------------------------------------------+\n');
 
 % CARREGA OS DADOS
-reply = input('[1] LOGÕSTICA [2] TANGENTE HIPERB”LICA\n');
+reply = input('[1] LOG√çSTICA [2] TANGENTE HIPERB√ìLICA\n');
        if reply == 1
           dados = load('C:\Users\Raul Melo\Documents\Perceptron SLP\dataIris.dat');
        else
@@ -22,8 +20,8 @@ reply = input('[1] LOGÕSTICA [2] TANGENTE HIPERB”LICA\n');
 dados = [normaliza(dados(:,1:4)) dados(:,5:7)];
 
 
-%% VARI¡VEIS INICIAIS
-% N⁄MERO DE REALIZA«’ES, TAXA DE APRENDIZAGEM E N⁄MERO DE …POCAS
+%% VARI√ÅVEIS INICIAIS
+% N√öMERO DE REALIZA√á√ïES, TAXA DE APRENDIZAGEM E N√öMERO DE √âPOCAS
 realizacoes = 20;
 eta = 0.1;
 n_epocas = 350;
@@ -43,16 +41,16 @@ for i = 1 : realizacoes
     X_teste  = dadosTeste(:,1:4);
     Y_teste  = dadosTeste(:,5:7);
 
-    % TREINA A REDE COM QUANTIDADE X DE …POCAS
+    % TREINA A REDE COM QUANTIDADE X DE √âPOCAS
     [W] = treino(X_treino, Y_treino, eta, n_epocas, n_atributos, n_neurons,reply);
-%     % TESTE DA REDE, LOGÕSTICA/TANH
+%     % TESTE DA REDE, LOG√çSTICA/TANH
     [acertos] = teste(X_teste, Y_teste, W, reply);
 %   
-%     % PERCENTUAL DE ACERTOS DE CADA REALIZA«√O 
+%     % PERCENTUAL DE ACERTOS DE CADA REALIZA√á√ÉO 
      perc = (acertos * 100) / size(X_teste, 1);
 %     
-%     % PERCENTUAL DE ACERTOS DE CADA REALIZA«√O PARA FUN«√O TANGENTE
-%     % HIPERB”LICA
+%     % PERCENTUAL DE ACERTOS DE CADA REALIZA√á√ÉO PARA FUN√á√ÉO TANGENTE
+%     % HIPERB√ìLICA
 %     perc1 = (acertos1 * 100) / size(X_teste, 1);
 %     % ARMAZENA EM UM VETOR DE ACERTOS
      vetor_acertos(i) = perc;
@@ -61,18 +59,18 @@ for i = 1 : realizacoes
 end
 
 
-% RESULTADOS PARA LOGÕSTICA
-% disp('FunÁ„o LOGÕSTICA');
-fprintf('\n\tN˙mero de realizaÁıes: %i\n', realizacoes);
-fprintf('\tAcur·cia mÈdia: %.2f\n', mean(vetor_acertos));
-fprintf('\tMenor acur·cia: %.2f\n', min(vetor_acertos));
-fprintf('\tMaior acur·cia: %.2f\n', max(vetor_acertos));
-fprintf('\tDesvio padr„o: %.2f\n\n', std(vetor_acertos));
+% RESULTADOS PARA LOG√çSTICA
+% disp('Fun√ß√£o LOG√çSTICA');
+fprintf('\n\tN√∫mero de realiza√ß√µes: %i\n', realizacoes);
+fprintf('\tAcur√°cia m√©dia: %.2f\n', mean(vetor_acertos));
+fprintf('\tMenor acur√°cia: %.2f\n', min(vetor_acertos));
+fprintf('\tMaior acur√°cia: %.2f\n', max(vetor_acertos));
+fprintf('\tDesvio padr√£o: %.2f\n\n', std(vetor_acertos));
 % 
-% % RESULTADOS PARA TANGENTE HIPERB”LICA
-% disp('FunÁ„o TANGENTE HIPERB”LICA');
-% fprintf('\n\tN˙mero de realizaÁıes: %i\n', realizacoes);
-% fprintf('\tAcur·cia mÈdia: %.2f\n', mean(vetor_acertos1));
-% fprintf('\tMenor acur·cia: %.2f\n', min(vetor_acertos1));
-% fprintf('\tMaior acur·cia: %.2f\n', max(vetor_acertos1));
-% fprintf('\tDesvio padr„o: %.2f\n\n', std(vetor_acertos1));
+% % RESULTADOS PARA TANGENTE HIPERB√ìLICA
+% disp('Fun√ß√£o TANGENTE HIPERB√ìLICA');
+% fprintf('\n\tN√∫mero de realiza√ß√µes: %i\n', realizacoes);
+% fprintf('\tAcur√°cia m√©dia: %.2f\n', mean(vetor_acertos1));
+% fprintf('\tMenor acur√°cia: %.2f\n', min(vetor_acertos1));
+% fprintf('\tMaior acur√°cia: %.2f\n', max(vetor_acertos1));
+% fprintf('\tDesvio padr√£o: %.2f\n\n', std(vetor_acertos1));
